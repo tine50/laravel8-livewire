@@ -6,7 +6,7 @@ use App\Models\Location;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Client extends Model
+class StatutLocation extends Model
 {
     use HasFactory;
 

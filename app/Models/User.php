@@ -2,14 +2,39 @@
 
 namespace App\Models;
 
+use App\Models\Role;
+use App\Models\Location;
+use App\Models\Paiement;
+use App\Models\Permission;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
+
+    public function locations()
+    {
+        return $this->hasMany(Location::class);
+    }
+
+    public function paiements()
+    {
+        return $this->hasMany(Paiement::class);
+    }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'user_role', 'user_id', 'role_id');
+    }
+
+    public function permissions()
+    {
+        return $this->belongsToMany(Permission::class, 'user_permission', 'user_id', 'permission_id');
+    }
+
 
     /**
      * The attributes that are mass assignable.

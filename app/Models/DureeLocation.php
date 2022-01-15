@@ -2,16 +2,16 @@
 
 namespace App\Models;
 
-use App\Models\Location;
+use App\Models\Tarification;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Client extends Model
+class DureeLocation extends Model
 {
     use HasFactory;
 
-    public function locations()
+    public function tarifications()
     {
-        return $this->hasMany(Location::class);
+        return $this->hasMany(Tarification::class);
     }
 }
