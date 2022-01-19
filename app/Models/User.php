@@ -15,27 +15,6 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    public function locations()
-    {
-        return $this->hasMany(Location::class);
-    }
-
-    public function paiements()
-    {
-        return $this->hasMany(Paiement::class);
-    }
-
-    public function roles()
-    {
-        return $this->belongsToMany(Role::class, 'user_role', 'user_id', 'role_id');
-    }
-
-    public function permissions()
-    {
-        return $this->belongsToMany(Permission::class, 'user_permission', 'user_id', 'permission_id');
-    }
-
-
     /**
      * The attributes that are mass assignable.
      *
@@ -62,4 +41,36 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function locations()
+    {
+        return $this->hasMany(Location::class);
+    }
+
+    public function paiements()
+    {
+        return $this->hasMany(Paiement::class);
+    }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'user_role', 'user_id', 'role_id');
+    }
+
+    public function permissions()
+    {
+        return $this->belongsToMany(Permission::class, 'user_permission', 'user_id', 'permission_id');
+    }
+
+    public function hasRole($role)
+    {
+        return $this->roles()->where('nom', $role)->first() !== null;
+    }
+
+    public function hasAnyRoles($roles)
+    {
+        return $this->roles()->whereIn('nom', $roles)->first() !== null;
+    }
+
+
 }
