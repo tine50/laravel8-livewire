@@ -21,7 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'nom', 'prenom','sexe','telephone1','telephone2', 'pieceIdentite','numeroPieceIdentite','email', 'photo', 'password'
     ];
 
     /**
@@ -72,5 +72,8 @@ class User extends Authenticatable
         return $this->roles()->whereIn('nom', $roles)->first() !== null;
     }
 
-
+    public function getAllRoleNamesAttribute()
+    {
+        return $this->roles->implode('nom', ' | ');
+    }
 }

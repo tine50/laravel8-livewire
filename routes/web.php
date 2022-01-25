@@ -6,7 +6,7 @@ use App\Models\ProprieteArticle;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\UserController;
+use App\Http\Livewire\Utilisateurs;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,10 +33,9 @@ Route::group([
         'as' => 'habilitations.'
     ], function(){
 
-        Route::get('/utilisateurs', [UserController::class, 'index'])->name('users.index');
+        Route::get('/utilisateurs', Utilisateurs::class)->name('users.index');
     });
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-// Route::get('/habilitations/utilisateurs', [UserController::class, 'index'])->name('utilisateurs')->middleware('auth.admin');
 

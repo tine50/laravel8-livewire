@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RoleTableSeeder::class);
         $this->call(PermissionTableSeeder::class);
         $this->call(DureeLocationTableSeeder::class);
-        
+
         Client::factory(10)->create();
         User::factory(10)->create();
         Article::factory(10)->create();
@@ -36,5 +36,6 @@ class DatabaseSeeder extends Seeder
         User::find(2)->roles()->attach(2);
         User::find(3)->roles()->attach(3);
         User::find(4)->roles()->attach(4);
+        
     }
 }
