@@ -17,7 +17,7 @@ class TypeArticleFactory extends Factory
     public function definition()
     {
         return [
-            'nom' => array_rand(['Immobilier', 'Télévision', 'Salle', 'Voiture'], 1),
+            'nom' => array_rand(array_flip(['Immobilier', 'Télévision', 'Salle', 'Voiture']), 1),
         ];
     }
 }

@@ -33,7 +33,7 @@
                         @foreach ($users as $user)
                             <tr>
                                 <td class="text-center">
-                                    @if($user->sexe == 1)
+                                    @if($user->sexe == '')
                                         <img src="{{ asset('images/man.png') }}" alt="" width="24">
                                     @else
                                     <img src="{{ asset('images/woman.png') }}" alt="" width="24">
@@ -43,7 +43,7 @@
                                 <td>{{ $user->allRoleNames }}</td>
                                 <td class="text-center"><span class="tag tag-success">{{ $user->created_at->diffForHumans() }}</span></td>
                                 <td class="text-center">
-                                    <button class="btn btn-link"><i class="far fa-edit"></i></button>
+                                    <button class="btn btn-link"><i class="far fa-edit" wire:click.prevent="goToEditUser({{ $user->id }})"></i></button>
                                     <button class="btn btn-link" wire:click="confirmDelete('{{ $user->prenom }} {{ $user->nom }}', {{ $user->id }})"><i class="far fa-trash-alt"></i></button>
                                 </td>
                             </tr>
@@ -63,33 +63,3 @@
     </div>
 </div>
 
-<script>
-    window.addEventListener('showConfirmMessage', event=>{
-        Swal.fire({
-        title: event.detail.message.title,
-        text: event.detail.message.text,
-        icon: event.detail.message.type,
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Continuer',
-        cancelButtonText: 'Annuler'
-        }).then((result) => {
-        if (result.isConfirmed) {
-            @this.deleteUser(event.detail.message.data.user_id)
-        }
-        })
-    })
-
-
-    window.addEventListener('showSuccessMessage', event=>{
-        Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: event.detail.message || 'Opération effectuée evec succès',
-            showConfirmButton: false,
-            timer: 3000
-            }
-        )
-    })
-</script>

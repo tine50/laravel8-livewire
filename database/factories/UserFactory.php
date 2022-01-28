@@ -25,11 +25,11 @@ class UserFactory extends Factory
         return [
             'nom' => $this->faker->lastName,
             'prenom' => $this->faker->firstName,
-            'sexe' => array_rand(["H", "F"], 1),
+            'sexe' => array_rand(array_flip(["H", "F"]), 1),
             'email' => $this->faker->unique()->safeEmail(),
-            'telephone1' => $this->faker->unique()->phoneNumber,
-            'telephone2' => $this->faker->unique()->phoneNumber,
-            'pieceIdentite' => array_rand(['CNI', 'PASSPORT', 'PERMIS DE CONDUIRE'], 1),
+            'telephone1' => $this->faker->regexify('76[0-9]{7}'),
+            'telephone2' => $this->faker->regexify('77[0-9]{7}'),
+            'pieceIdentite' => array_rand(array_flip(['CNI', 'PASSPORT', 'PERMIS DE CONDUIRE']), 1),
             'numeroPieceIdentite' => $this->faker->unique()->bankAccountNumber,
             'photo' => $this->faker->imageUrl(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
