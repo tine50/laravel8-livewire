@@ -6,6 +6,7 @@ use App\Models\ProprieteArticle;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Livewire\TypeArticleComp;
 use App\Http\Livewire\Utilisateurs;
 
 /*
@@ -34,6 +35,14 @@ Route::group([
     ], function(){
 
         Route::get('/utilisateurs', Utilisateurs::class)->name('users.index');
+    });
+
+    Route::group([
+        'prefix' => 'gestarticles',
+        'as' => 'gestarticles.'
+    ], function(){
+
+        Route::get('/typearticles', TypeArticleComp::class)->name('typearticles');
     });
 });
 

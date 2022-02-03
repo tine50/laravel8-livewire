@@ -132,8 +132,10 @@
             <div class="col-md-12">
                 <div class="card card-primary">
                     <div class="card-header d-flex align-items-center">
-                        <h3 class="card-title flex-grow-1"><i class="fas fa-fingerprint fa-2x"></i> Rôles & permissions</h3>
-                        <button class="btn bg-gradient-success" wire:click="updateRoleAndPermissions"><i class="fas fa-check"></i> Appliquer les modifications</button>
+                        <h3 class="card-title flex-grow-1"><i class="fas fa-fingerprint fa-2x"></i> Rôles & permissions
+                        </h3>
+                        <button class="btn bg-gradient-success" wire:click="updateRoleAndPermissions"><i
+                                class="fas fa-check"></i> Appliquer les modifications</button>
                     </div>
                     <div class="card-body">
                         <div class="accordion">

@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Client;
 use App\Models\Article;
 use Illuminate\Database\Seeder;
+use Database\Seeders\UserSeeder;
 use Database\Seeders\RoleTableSeeder;
 use Database\Seeders\PermissionTableSeeder;
 use Database\Seeders\TypeArticleTableSeeder;
@@ -44,5 +45,6 @@ class DatabaseSeeder extends Seeder
         User::find(2)->permissions()->attach(2);
         User::find(2)->permissions()->attach(4);
 
+        $this->call(UserSeeder::class);
     }
 }
